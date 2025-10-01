@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Trạm 1 – Chọn trang phục ảo</title>
+<style>
+body { font-family: Arial, sans-serif; text-align:center; background:#fdf6e3; padding:30px; }
+h2 { color:#b03060; }
+#avatar { width:150px; transition: transform 0.3s ease; margin-top:20px; }
+.costume-container { margin-top:20px; }
+.costume { width:80px; cursor:pointer; margin:5px; transition: transform 0.2s; position:relative; }
+.costume:hover { transform: scale(1.2); }
+.tooltip {
+  visibility:hidden;
+  background:#333; color:#fff; padding:5px 10px; border-radius:5px;
+  position:absolute; z-index:10; font-size:14px;
+  white-space: nowrap;
+}
+.costume:hover .tooltip { visibility:visible; }
+button { margin-top:20px; padding:10px 20px; font-size:16px; cursor:pointer; background:#b03060; color:#fff; border:none; border-radius:5px; }
+</style>
+</head>
+<body>
+
+<h2>Hóa thân thành khách quý – Chọn trang phục ảo</h2>
+<img id="avatar" src="avatar_default.png" alt="Avatar">
+
+<div class="costume-container">
+  <div style="display:inline-block; position:relative;">
+    <img class="costume" src="trangphuc1.png" alt="Trang phục 1">
+    <span class="tooltip">Áo Tày truyền thống – tượng trưng cho mùa xuân ấm no</span>
+  </div>
+  <div style="display:inline-block; position:relative;">
+    <img class="costume" src="trangphuc2.png" alt="Trang phục 2">
+    <span class="tooltip">Áo Nùng rực rỡ – thể hiện tinh thần đoàn kết bản làng</span>
+  </div>
+  <div style="display:inline-block; position:relative;">
+    <img class="costume" src="trangphuc3.png" alt="Trang phục 3">
+    <span class="tooltip">Trang phục lễ hội – dùng trong nghi lễ mở hội</span>
+  </div>
+</div>
+
+<button id="shareBtn">Chia sẻ avatar</button>
+
+<script>
+const avatar = document.getElementById('avatar');
+const costumes = document.querySelectorAll('.costume');
+
+costumes.forEach(c => {
+  c.addEventListener('click', () => {
+    avatar.style.transform = 'scale(1.2) rotate(10deg)'; // animation nhỏ
+    setTimeout(()=>{ avatar.style.transform='scale(1) rotate(0deg)'; }, 300);
+    avatar.src = c.src; // thay avatar mặc trang phục
+  });
+});
+
+// Nút chia sẻ (demo)
+document.getElementById('shareBtn').addEventListener('click', () => {
+  alert('Chức năng chia sẻ demo: bạn có thể lưu avatar hoặc chia sẻ lên mạng xã hội!');
+});
+</script>
+
+</body>
+</html>
